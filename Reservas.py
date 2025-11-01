@@ -15,6 +15,7 @@ cadastro = {
 valores = {"Simples":100.00, "Duplo":150.00, "Luxo":250.00
 }
 
+
 print('''Temos 3 opções disponíveis:
     Simples: R$ 100,00 por dia.
     Duplo: R$ 150,00 por dia.
@@ -39,6 +40,7 @@ if idade1 >= 18:
 
 else:
     print(f'{nome1} é menor de idade e não pode alugar sem responsável.')
+    del cadastro[nome1]
 
 if idade2 >= 18:
     escolha_2 = input(f"Qual opção {nome2} vai escolher? ")
@@ -47,7 +49,7 @@ if idade2 >= 18:
     cadastro[nome2][escolha_2] = total_2
 else:
     print(f'{nome2} é menor de idade e não pode alugar sem responsável.')
-
+    del cadastro[nome2]
 if idade3 >= 18:
     escolha_3 = input(f"Qual opção {nome3} vai escolher? ")
     dias_3 = float(input(f"Quantos dias {nome3} irá permanecer? "))
@@ -55,6 +57,7 @@ if idade3 >= 18:
     cadastro[nome3][escolha_3] = total_3
 else:
     print(f'{nome3} é menor de idade e não pode alugar sem responsável.')
+    del cadastro[nome3]
 
 print('----'*10)
 print("")
