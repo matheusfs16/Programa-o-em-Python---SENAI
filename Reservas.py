@@ -59,6 +59,7 @@ else:
     print(f'{nome3} é menor de idade e não pode alugar sem responsável.')
     del cadastro[nome3]
 
-print('----'*10)
+print("")
+print("-----------------CADASTRO---------------")
 print("")
 print(cadastro)
