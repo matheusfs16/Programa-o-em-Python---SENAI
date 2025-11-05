@@ -16,25 +16,47 @@ continuar = "s"
 user = "matheusfs"
 senha = 1234
 tentativas = 3
+notas = {
+    'alunos':[],
+    'notas':[]
+}
 
-while tentativas != 0:
+for i in range(tentativas):
     login = input("Digite seu nome de usuário: ")
     senha_login = int(input("Digite sua senha: "))
     
     if login == user and senha_login == senha:
         while continuar == "s":
+            nome = input("Nome dos alunos: ")
             n1 = int(input("Digite a primeira nota: "))
             n2 = int(input("Digite a segunda nota: "))
             n3 = int(input("Digite a terceira nota: "))
             media = (n1 + n2 + n3) /3
-            print(f"A média das notas é de {media}")
+            notas["alunos"].append(nome)
+            notas['notas'].append(media)
+            if media >= 7:
+                print("Aluno Aprovado")
+                # print("A média de", notas["alunos"],'é de', notas['notas'])
+                print(f"A média das notas de {nome} é de {media}")
+            elif media < 7 and media >= 5:
+                print("Aluno de Recuperação")
+                print(f"A média das notas de {nome} é de {media}")
+            else:
+                print("Aluno Reprovado")
+                print(f"A média das notas de {nome} é de {media}")
+
             continuar = input("Deseja continuar?s/n")
         print("Até a próxima!")
         break
     else:
         tentativas -= 1
-        print("Usuário ou senha incorretos, tente novamente")
-        print(f"Tentativas restantes: {tentativas}")
+        if tentativas == 1:
+           print("Ultima tentativa, sua conta será bloqueada no próximo erro")
+        elif tentativas >= 1:
+            print("Usuário ou senha incorretos, tente novamente")
+            print(f"Tentativas restantes: {tentativas}")
+        else:
+            pass
 
 if tentativas == 0:
     print("Conta bloqueada")
