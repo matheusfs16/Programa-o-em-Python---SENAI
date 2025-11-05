@@ -26,8 +26,9 @@ for i in range(tentativas):
     senha_login = int(input("Digite sua senha: "))
     
     if login == user and senha_login == senha:
-        while continuar == "s":
-            nome = input("Nome dos alunos: ")
+        qtd = int(input("Quantos alunos? "))
+        for x in range(qtd):
+            nome = input("Nome do aluno: ")
             n1 = int(input("Digite a primeira nota: "))
             n2 = int(input("Digite a segunda nota: "))
             n3 = int(input("Digite a terceira nota: "))
@@ -36,7 +37,6 @@ for i in range(tentativas):
             notas['notas'].append(media)
             if media >= 7:
                 print("Aluno Aprovado")
-                # print("A média de", notas["alunos"],'é de', notas['notas'])
                 print(f"A média das notas de {nome} é de {media}")
             elif media < 7 and media >= 5:
                 print("Aluno de Recuperação")
@@ -44,10 +44,29 @@ for i in range(tentativas):
             else:
                 print("Aluno Reprovado")
                 print(f"A média das notas de {nome} é de {media}")
+            
+        acesso = input("Deseja ver todas as médias?s/n")
+        
+            
+        if acesso == 's':
+            print("----"*10)
+            for i in range(len(notas['alunos'])):
+                print((notas["alunos"][i], notas["notas"][i]))
+                print("----"*10)
 
-            continuar = input("Deseja continuar?s/n")
+        espec = input('Deseja ver uma média especifica?')
+
+        if espec == 's':
+            print("----"*10)
+            for i in range(len(notas['alunos'])):
+                print(i, '-', notas["alunos"][i])
+                
+            escolha = int(input('Escolha o aluno: '))  
+            print((notas["alunos"][escolha], notas["notas"][escolha]))            
+
+
         print("Até a próxima!")
-        break
+        
     else:
         tentativas -= 1
         if tentativas == 1:
@@ -62,3 +81,7 @@ if tentativas == 0:
     print("Conta bloqueada")
 else:
     pass
+
+
+for i in range(len(notas['alunos'])):
+    print(i, '-', notas["alunos"][i])
