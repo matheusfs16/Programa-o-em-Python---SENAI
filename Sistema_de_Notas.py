@@ -17,8 +17,8 @@ user = "matheusfs"
 senha = 1234
 tentativas = 3
 notas = {
-    'alunos':[],
-    'notas':[]
+    'alunos':[''],
+    'notas':['']
 }
 
 for i in range(tentativas):
@@ -51,21 +51,24 @@ for i in range(tentativas):
         if acesso == 's':
             print("----"*10)
             for i in range(len(notas['alunos'])):
-                print((notas["alunos"][i], notas["notas"][i]))
-                print("----"*10)
+                if i != 0:
+                    print(notas["alunos"][i], notas["notas"][i])
+                    print("----"*10)
 
-        espec = input('Deseja ver uma média especifica?')
+        espec = input('Deseja ver uma média especifica?s/n')
 
         if espec == 's':
             print("----"*10)
             for i in range(len(notas['alunos'])):
-                print(i, '-', notas["alunos"][i])
+                if i != 0:
+                    print(i, '-', notas["alunos"][i])
                 
             escolha = int(input('Escolha o aluno: '))  
-            print((notas["alunos"][escolha], notas["notas"][escolha]))            
+            print(notas["alunos"][escolha], notas["notas"][escolha])          
 
 
         print("Até a próxima!")
+        break
         
     else:
         tentativas -= 1
@@ -81,7 +84,3 @@ if tentativas == 0:
     print("Conta bloqueada")
 else:
     pass
-
-
-for i in range(len(notas['alunos'])):
-    print(i, '-', notas["alunos"][i])
